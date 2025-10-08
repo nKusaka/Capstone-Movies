@@ -1,7 +1,6 @@
 package com.netflix;
 import java.util.*;
-import java.util.Scanner;
-
+import java.io.*;
 public class MovieWatchlist {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
