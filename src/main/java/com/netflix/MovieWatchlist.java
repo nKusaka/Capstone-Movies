@@ -1,6 +1,5 @@
 package com.netflix;
 import java.util.*;
-import java.util.Scanner;
 
 public class MovieWatchlist {
     public static void main(String[] args) {
