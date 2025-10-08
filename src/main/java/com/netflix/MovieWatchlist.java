@@ -2,8 +2,45 @@ package com.netflix;
 import java.util.*;
 import java.io.*;
 public class MovieWatchlist {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+       ArrayList<Cat> allCats = new ArrayList<>();
+       allCats.add(new Cat("Jerry"));
+       allCats.add(new Cat("Tom"));
+
+
+        // Display all cats
+        for (Cat cat : allCats) {
+            System.out.println(cat.name);
+        }
+
+        try {
+            FileWriter writer = new FileWriter("cats.txt"); // This will create or overwrite the file
+            for (Cat cat : allCats) {
+                writer.write(cat.name + "\n");
+            }
+            writer.close();
+            System.out.println("Cat names have been written to cats.txt");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+
         Scanner scanner = new Scanner(System.in);
+        FileWriter fileWriter = new FileWriter("MovieWatchlist.csv");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write("Your movie watchlist: \n");
+
+
         // Start with an empty watchlist (no sample data)
         ArrayList<String> watchlist = new ArrayList<>();
         HashMap<String, Double> ratings = new HashMap<>();
@@ -50,6 +87,8 @@ public class MovieWatchlist {
                         scanner.nextLine();
                         ratings.put(rateMovie, rate);
                         System.out.println(rateMovie + " rated " + rate + "⭐!");
+                        bufferedWriter.write(rateMovie + " rated " + rate + "⭐!\n");
+
                     } else {
                         System.out.println("Movie not found in your watchlist.");
                     }
@@ -62,5 +101,7 @@ public class MovieWatchlist {
                     System.out.println("Invalid choice. Try again.");
             }
         }
+        bufferedWriter.close();
+        fileWriter.close();
     }
 }
