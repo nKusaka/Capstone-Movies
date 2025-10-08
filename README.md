@@ -1,2 +1,2 @@
 # Capstone-Movies
-Demo project
+An application to store all your favorite movies
